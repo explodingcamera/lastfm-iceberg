@@ -1,4 +1,6 @@
-export const getData = async ({user, mode, period, amount, apikey}) => {
+const apikey = "375d07a53fd83a6e2a8456f9f124fb7d";
+
+export const getData = async ({user, mode, period, amount}) => {
 	user = encodeURIComponent(user)
 
 	const resp = await fetch(`https://ws.audioscrobbler.com/2.0/?method=user.gettop${mode}&user=${user}&period=${period}&limit=${parseInt(amount) + 20}&api_key=52e8e86c171ed9affffa34580666927a&format=json`)
