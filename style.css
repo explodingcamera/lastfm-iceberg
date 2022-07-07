@@ -130,6 +130,11 @@ input[type="submit"] {
   border-width: 2px 2px 0;
 }
 
+#results tbody {
+  display: flex;
+  flex-direction: column;
+}
+
 #results tr:nth-child(1) {
   background-image: url("./images/iceberg-1.png");
 }
