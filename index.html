@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Last.fm iceberg chart generator</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;700"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script type="module" src="index.js"></script>
+  </head>
+  <body>
+    <h1>Last.fm iceberg chart generator</h1>
+    <p>
+      This site lets you generate an
+      <a href="https://knowyourmeme.com/memes/iceberg-tiers-parodies"
+        >iceberg chart</a
+      >
+      based on your most played artists, albums or tracks and their respective
+      listener count.
+    </p>
+    <p>
+      You can generate an API key
+      <a href="https://www.last.fm/api/account/create" target="_blank">here</a>
+      (just takes 2 seconds).
+    </p>
+    <p>
+      <a href="https://github.com/explodingcamera/lastfm-iceberg">github</a>
+      <a
+        href="https://www.reddit.com/r/lastfm/comments/knpsdm/while_waiting_for_2020s_lastyear_i_made_an/"
+        >original code</a
+      >
+    </p>
+    <form id="form">
+      <table>
+        <tbody>
+          <tr>
+            <td>Last.fm username:</td>
+            <td><input name="user" autofocus required /></td>
+          </tr>
+          <tr>
+            <td>Last.fm API Key:</td>
+            <td><input name="apikey" autofocus required /></td>
+          </tr>
+          <tr>
+            <td>Data to plot:</td>
+            <td>
+              <select name="mode">
+                <option value="artists" selected>Artists</option>
+                <option value="albums">Albums</option>
+                <option value="tracks">Tracks</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>Date period:</td>
+            <td>
+              <select name="period">
+                <option value="7day">Week</option>
+                <option value="1month">Month</option>
+                <option value="3month">3 months</option>
+                <option value="6month">6 months</option>
+                <option value="12month">Year</option>
+                <option value="overall" selected>Overall</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>Number of results:</td>
+            <td>
+              <input type="number" name="amount" min="5" max="100" value="50" />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <input id="submit" type="submit" value="Generate" />
+    </form>
+    <p id="message">Generating, please wait... This will take a few seconds.</p>
+    <p id="error"></p>
+    <table id="results">
+      <tbody>
+        <tr>
+          <td class="result"></td>
+        </tr>
+        <tr>
+          <td class="result"></td>
+        </tr>
+        <tr>
+          <td class="result"></td>
+        </tr>
+        <tr>
+          <td class="result"></td>
+        </tr>
+        <tr>
+          <td class="result"></td>
+        </tr>
+        <tr>
+          <td class="result"></td>
+        </tr>
+        <tr>
+          <td class="result"></td>
+        </tr>
+        <tr>
+          <td class="result"></td>
+        </tr>
+        <tr>
+          <td class="result"></td>
+        </tr>
+      </tbody>
+    </table>
+    <noscript>This page requires JavaScript to work.</noscript>
+  </body>
+</html>

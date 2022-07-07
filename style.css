@@ -1,0 +1,181 @@
+* {
+  font-family: "Barlow";
+}
+
+html {
+  background-image: linear-gradient(135deg, #321035 10%, #1904e5 100%);
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+a {
+  color: white;
+}
+
+body {
+  margin: 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+}
+
+body > p {
+  max-width: 640px;
+  width: 75vw;
+  font-size: 1.2rem;
+}
+
+#form {
+  display: inline-block;
+  margin-top: 0.5em;
+}
+
+#form td:first-child {
+  text-align: end;
+  padding-right: 0.5em;
+}
+
+#form select {
+  width: 100%;
+}
+
+#form input,
+select {
+  border: none;
+  border-radius: 2px;
+  padding: 0.5rem 0.8rem;
+  margin: 0.4rem 0;
+  box-shadow: 1px 1px 8px 0px #d11d1d;
+}
+
+#form input[type="submit"] {
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+
+  font-size: 1rem;
+  color: white;
+  cursor: pointer;
+  margin-right: 0.8rem;
+  margin-top: 0.8rem;
+  transition: all 0.1s ease-in-out;
+  padding: 0.8rem 1.2rem;
+  border-radius: 0.4rem;
+  backdrop-filter: blur(5px);
+  background: #ff2828d9;
+  font-weight: 800;
+  transition: all 0.2s;
+  border: none;
+}
+
+#message,
+#error,
+#results {
+  display: none;
+}
+
+#results {
+  border-collapse: collapse;
+  font-weight: bold;
+  font-size: 1em;
+  width: 640px;
+  margin: auto;
+  margin-top: 1em;
+}
+
+#results tr {
+  background-position: center;
+  background-size: 100% 100%;
+  text-shadow: rgb(0, 0, 0) 2px 0px 0px, rgb(0, 0, 0) 1.75517px 0.958851px 0px,
+    rgb(0, 0, 0) 1.0806px 1.68294px 0px, rgb(0, 0, 0) 0.141474px 1.99499px 0px,
+    rgb(0, 0, 0) -0.832294px 1.81859px 0px,
+    rgb(0, 0, 0) -1.60229px 1.19694px 0px, rgb(0, 0, 0) -1.97999px 0.28224px 0px,
+    rgb(0, 0, 0) -1.87291px -0.701566px 0px,
+    rgb(0, 0, 0) -1.30729px -1.51361px 0px,
+    rgb(0, 0, 0) -0.421592px -1.95506px 0px,
+    rgb(0, 0, 0) 0.567324px -1.91785px 0px,
+    rgb(0, 0, 0) 1.41734px -1.41108px 0px,
+    rgb(0, 0, 0) 1.92034px -0.558831px 0px;
+  /* https://owumaro.github.io/text-stroke-generator/ */
+  color: white;
+  height: 100px;
+}
+
+@media (max-width: 740px) {
+  #results {
+    width: 75vw;
+  }
+
+  #results tr {
+    height: 0;
+  }
+}
+
+#results tr:nth-child(1) {
+  background-image: url("./images/iceberg-1.png");
+}
+
+#results tr:nth-child(2) {
+  background-image: url("./images/iceberg-2.png");
+}
+
+#results tr:nth-child(3) {
+  background-image: url("./images/iceberg-3.png");
+}
+
+#results tr:nth-child(4) {
+  background-image: url("./images/iceberg-4.png");
+}
+
+#results tr:nth-child(5) {
+  background-image: url("./images/iceberg-5.png");
+}
+
+#results tr:nth-child(6) {
+  background-image: url("./images/iceberg-6.png");
+}
+
+#results tr:nth-child(7) {
+  background-image: url("./images/iceberg-7.png");
+}
+
+#results tr:nth-child(8) {
+  background-image: url("./images/iceberg-8.png");
+}
+
+#results tr:nth-child(9) {
+  background-image: url("./images/iceberg-9.png");
+}
+
+#results td {
+  border: 3px solid white;
+  padding: 1em;
+}
+
+.result {
+  width: 640px;
+  white-space: pre-wrap;
+  text-align: center;
+}
+
+.result a {
+  color: white;
+  text-decoration: none;
+}
+
+noscript {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
