@@ -186,6 +186,7 @@ input[type="submit"] {
 .result a {
   color: white;
   text-decoration: none;
+  white-space: nowrap;
 }
 
 noscript {
@@ -198,4 +199,8 @@ noscript {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.resultend {
+  padding: 1rem 1rem 2rem 1rem !important;
 }
