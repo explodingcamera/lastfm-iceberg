@@ -1,12 +1,10 @@
 import { getData } from "./api.js";
-import domToImage from "https://esm.sh/dom-to-image@2.6.0";
+import { toJpeg } from "https://esm.sh/html-to-image@1.9.0";
 
 const downloadJPG = () => {
   const el = document.getElementById('results');
 
-  domToImage.toJpeg(el, { quality: 0.95, height: el.clientHeight, width: el.clientWidth, style: {
-    height: el.clientHeight,
-  } })
+  toJpeg(el, { quality: 0.95 })
     .then(function (dataUrl) {
         var link = document.createElement('a');
         link.download = 'iceberg.jpeg';
@@ -70,7 +68,6 @@ const handleSubmit = async (e) => {
     text.appendChild(document.createTextNode(element[0]));
     text.setAttribute("href", element[2]);
     result.appendChild(text);
-    result.innerHTML += "     ";
   }
 
 
