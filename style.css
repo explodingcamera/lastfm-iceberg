@@ -34,6 +34,12 @@ body > p {
 #form {
   display: inline-block;
   margin-top: 0.5em;
+  margin-bottom: 1.5em;
+}
+
+#download {
+  margin-top: 1rem;
+  display: none;
 }
 
 #form td:first-child {
@@ -41,11 +47,11 @@ body > p {
   padding-right: 0.5em;
 }
 
-#form select {
+select {
   width: 100%;
 }
 
-#form input,
+input,
 select {
   border: none;
   border-radius: 2px;
@@ -54,7 +60,7 @@ select {
   box-shadow: 1px 1px 8px 0px #d11d1d;
 }
 
-#form input[type="submit"] {
+input[type="submit"] {
   margin-top: 1em;
   margin-bottom: 0.5em;
 
@@ -84,8 +90,7 @@ select {
   font-weight: bold;
   font-size: 1em;
   width: 640px;
-  margin: auto;
-  margin-top: 1em;
+  margin: 0;
 }
 
 #results tr {
@@ -112,7 +117,10 @@ select {
   }
 
   #results tr {
-    height: 0;
+    height: 60px;
+  }
+  #results td {
+    font-size: 0.9rem;
   }
 }
 

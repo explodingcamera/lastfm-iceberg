@@ -13,15 +13,16 @@ export const getData = async ({user, mode, period, amount, apikey}) => {
 
 	if (mode === "albums")
 		return await Promise.all(data.topalbums.album.map(async album => {
-			const name = encodeURIComponent(album.album.name);
-			const data = await(await fetch(`https://ws.audioscrobbler.com/2.0/?method=album.getinfo&album=${name}&api_key=52e8e86c171ed9affffa34580666927a&format=json`)).json()
+			const name = encodeURIComponent(album.name);
+			const artist = encodeURIComponent(album.artist.name);
+			const data = await(await fetch(`https://ws.audioscrobbler.com/2.0/?method=album.getinfo&album=${name}&artist=${artist}&api_key=52e8e86c171ed9affffa34580666927a&format=json`)).json()
 			return Promise.resolve([album.artist.name + ' – ' + album.name, data.album ? Number(data.album.listeners) : 0, album.url])
 		}));
 
-	if (mode === "albums")
+	if (mode === "tracks")
 		return await Promise.all(data.toptracks.track.map(async track => {
 			const name = encodeURIComponent(track.artist.name);
 			const data = await(await fetch(`https://ws.audioscrobbler.com/2.0/?method=track.getinfo&artist=${name}&track=${encodeURIComponent(track.name)}&api_key=${apikey}&format=json`)).json()
-			return Promise.resolve([track.artist.name + ' – ' + track.name, data.track ? Number(data.track.listeners) : 0, x.url])
+			return Promise.resolve([track.artist.name + ' – ' + track.name, data.track ? Number(data.track.listeners) : 0, track.url])
 		}));
 }

@@ -1,8 +1,24 @@
 import { getData } from "./api.js";
+import domToImage from "https://esm.sh/dom-to-image@2.6.0";
+
+const downloadJPG = () => {
+  const el = document.getElementById('results');
+
+  domToImage.toJpeg(el, { quality: 0.95, height: el.clientHeight, width: el.clientWidth, style: {
+    height: el.clientHeight,
+  } })
+    .then(function (dataUrl) {
+        var link = document.createElement('a');
+        link.download = 'iceberg.jpeg';
+        link.href = dataUrl;
+        link.click();
+    });
+}
 
 const setError = (error) => {
   document.getElementById("submit").disabled = false;
   document.getElementById("message").style.display = "none";
+  document.getElementById("download").style.display = "none";
   document.getElementById("error").innerHTML = "Error: " + error + ".";
   document.getElementById("error").style.display = "block";
 };
@@ -10,6 +26,7 @@ const setError = (error) => {
 const setSubmitted = () => {
   document.getElementById("submit").disabled = true;
   document.getElementById("message").style.display = "block";
+  document.getElementById("download").style.display = "none";
   document.getElementById("error").style.display = "none";
   document.getElementById("results").style.display = "none";
 };
@@ -18,6 +35,7 @@ const setSuccess = () => {
   document.getElementById("submit").disabled = false;
   document.getElementById("message").style.display = "none";
   document.getElementById("results").style.display = "block";
+  document.getElementById("download").style.display = "block";
 };
 
 const handleSubmit = async (e) => {
@@ -55,10 +73,15 @@ const handleSubmit = async (e) => {
     result.innerHTML += "     ";
   }
 
+
   for (const element of document.getElementsByClassName("result")) element.innerHTML = element.innerHTML.trim();
   setSuccess();
 };
 
 window.addEventListener("load", () => {
   document.getElementById("form").addEventListener("submit", handleSubmit);
+
+
+  const button = document.getElementById("download");
+  button.addEventListener("click", downloadJPG);
 });
