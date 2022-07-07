@@ -57,7 +57,7 @@ select {
   border-radius: 2px;
   padding: 0.5rem 0.8rem;
   margin: 0.4rem 0;
-  box-shadow: 1px 1px 8px 0px #d11d1d;
+  box-shadow: 1px 1px 8px 0px #00000094;
 }
 
 input[type="submit"] {
