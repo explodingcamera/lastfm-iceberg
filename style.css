@@ -37,6 +37,10 @@ body > p {
   margin-bottom: 1.5em;
 }
 
+#form td:last-of-type {
+  width: 10rem;
+}
+
 #download {
   margin-top: 1rem;
   display: none;
@@ -58,6 +62,8 @@ select {
   padding: 0.5rem 0.8rem;
   margin: 0.4rem 0;
   box-shadow: 1px 1px 8px 0px #00000094;
+  width: 10rem;
+  box-sizing: border-box;
 }
 
 input[type="submit"] {
