@@ -1,6 +1,10 @@
 import { getData } from "./api.js";
 import { toJpeg } from "https://esm.sh/html-to-image@1.9.0";
 
+if (document.location.host === "explodingcamera.github.io") {
+  document.location = "https://lastfm-iceberg.dawdle.space";
+}
+
 const downloadJPG = () => {
   const el = document.getElementById('results');
 

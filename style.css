@@ -1,10 +1,12 @@
 * {
-  font-family: "monospace";
+  font-family: "DM Mono", monospace;
 }
 
 html {
-  background-image: linear-gradient(135deg, #321035 10%, #1904e5 100%);
+  background: radial-gradient(ellipse at bottom, #153a68 0%, #060708 100%);
   min-height: 100vh;
+  background-size: 400% 400%;
+  animation: gradient 4s ease infinite;
 
   display: flex;
   flex-direction: column;
@@ -101,7 +103,7 @@ input[type="submit"] {
 }
 
 #results::after {
-  content: "explodingcamera.github.io/lastfm-iceberg";
+  content: "lastfm-iceberg.dawdle.space";
   position: absolute;
   bottom: 0;
   left: 0;
