@@ -1,5 +1,5 @@
 import { getData } from "./api.js";
-import { toJpeg } from "https://esm.sh/html-to-image@1.9.0";
+import { toJpeg } from "https://esm.sh/html-to-image@1.11.11";
 
 if (document.location.host === "explodingcamera.github.io") {
   document.location = "https://lastfm-iceberg.dawdle.space";
@@ -21,7 +21,7 @@ const setError = (error) => {
   document.getElementById("submit").disabled = false;
   document.getElementById("message").style.display = "none";
   document.getElementById("download").style.display = "none";
-  document.getElementById("error").innerHTML = "Error: " + error + ".";
+  document.getElementById("error").innerHTML = "Error: " + error + "." + "\n" + "Try disabling adblockers and refreshing the page, some adblockers block the last.fm API.";
   document.getElementById("error").style.display = "block";
 };
 
