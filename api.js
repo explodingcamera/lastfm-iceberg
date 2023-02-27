@@ -1,3 +1,4 @@
+// please use a different api key for your own projects - I don't want this to get rate limited by last.fm
 const apikey = "375d07a53fd83a6e2a8456f9f124fb7d";
 
 export const getData = async ({user, mode, period, amount, filter}) => {
@@ -8,7 +9,7 @@ export const getData = async ({user, mode, period, amount, filter}) => {
 
 	if (mode === "artists") {
 		return await Promise.all(data.topartists.artist.filter(artist => {
-			if (filter) {
+			if (!filter) {
 				return !artist.name.includes(", ")
 			};
 			return true;
