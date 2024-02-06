@@ -3,123 +3,83 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Last.fm iceberg chart generator</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>last.fm iceberg chart generator</title>
+    <link rel="stylesheet" href="./style.css" />
     <link rel="preconnect" href="https://fonts.bunny.net" />
     <link
       href="https://fonts.bunny.net/css?family=dm-mono:300,500"
       rel="stylesheet"
     />
-    <script type="module" src="index.js"></script>
+    <script type="module" src="./index.js"></script>
   </head>
   <body>
-    <h1>last.fm iceberg chart generator</h1>
+    <h1><span class="lastfm">last.fm</span> iceberg chart generator</h1>
     <p>
-      this site lets you generate an
+      Generate an
       <a href="https://knowyourmeme.com/memes/iceberg-tiers-parodies"
-        >iceberg chart</a
+        >iceberg charts</a
       >
       based on your most played artists, albums or tracks and their respective
       listener count.
-    </p>
-    <!-- <p>
-      You can generate an API key
-      <a href="https://www.last.fm/api/account/create" target="_blank">here</a>
-      or view your
-      <a href="https://www.last.fm/api/accounts" target="_blank"
-        >existing api keys</a
-      >.
-    </p> -->
-    <p>
-      <a href="https://github.com/explodingcamera/lastfm-iceberg">github</a>
-      <a
-        href="https://www.reddit.com/r/lastfm/comments/knpsdm/while_waiting_for_2020s_lastyear_i_made_an/"
-        >original code</a
+      <br />
+      <br />
+      <a href="https://henry.dawdle.space/">creator</a>
+      <a href="https://github.com/explodingcamera/lastfm-iceberg"
+        >source-code</a
       >
     </p>
     <form id="form">
-      <table>
-        <tbody>
-          <tr>
-            <td>Last.fm username:</td>
-            <td><input name="user" autofocus required /></td>
-          </tr>
-          <!-- <tr>
-            <td>Last.fm API Key:</td>
-            <td><input name="apikey" autofocus required /></td>
-          </tr> -->
-          <tr>
-            <td>Data to plot:</td>
-            <td>
-              <select name="mode">
-                <option value="artists" selected>Artists</option>
-                <option value="albums">Albums</option>
-                <option value="tracks">Tracks</option>
-              </select>
-            </td>
-          </tr>
-          <tr>
-            <td>Date period:</td>
-            <td>
-              <select name="period">
-                <option value="7day">Week</option>
-                <option value="1month">Month</option>
-                <option value="3month">3 months</option>
-                <option value="6month">6 months</option>
-                <option value="12month">Year</option>
-                <option value="overall" selected>Overall</option>
-              </select>
-            </td>
-          </tr>
-          <tr>
-            <td>Number of results:</td>
-            <td>
-              <input type="number" name="amount" min="5" max="100" value="50" />
-            </td>
-          </tr>
-          <tr>
-            <td>Include guest appearances:</td>
-            <td>
-              <input type="checkbox" name="filter" />
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <fieldset>
+        <label
+          >Last.fm username
+          <input name="user" autofocus required />
+        </label>
+        <label
+          >Data to plot
+          <select name="mode">
+            <option value="artists" selected>Artists</option>
+            <option value="albums">Albums</option>
+            <option value="tracks">Tracks</option>
+          </select>
+        </label>
+      </fieldset>
+      <fieldset>
+        <label
+          >Date period
+          <select name="period">
+            <option value="7day">Week</option>
+            <option value="1month">Month</option>
+            <option value="3month">3 months</option>
+            <option value="6month">6 months</option>
+            <option value="12month">Year</option>
+            <option value="overall" selected>Overall</option>
+          </select>
+        </label>
+        <label
+          >Number of results
+          <input type="number" name="amount" min="5" max="100" value="50" />
+        </label>
+      </fieldset>
+      <label
+        >Include guest appearances
+        <input type="checkbox" name="filter" />
+      </label>
       <input id="submit" type="submit" value="Generate" />
     </form>
     <p id="message">Generating, please wait... This will take a few seconds.</p>
     <p id="error"></p>
-    <table id="results">
-      <tbody>
-        <tr>
-          <td class="result"></td>
-        </tr>
-        <tr>
-          <td class="result"></td>
-        </tr>
-        <tr>
-          <td class="result"></td>
-        </tr>
-        <tr>
-          <td class="result"></td>
-        </tr>
-        <tr>
-          <td class="result"></td>
-        </tr>
-        <tr>
-          <td class="result"></td>
-        </tr>
-        <tr>
-          <td class="result"></td>
-        </tr>
-        <tr>
-          <td class="result"></td>
-        </tr>
-        <tr>
-          <td class="result resultend"></td>
-        </tr>
-      </tbody>
-    </table>
+    <ul id="results">
+      <li class="result"></li>
+      <li class="result"></li>
+      <li class="result"></li>
+      <li class="result"></li>
+      <li class="result"></li>
+      <li class="result"></li>
+      <li class="result"></li>
+      <li class="result"></li>
+      <li class="result"></li>
+    </ul>
+
     <input id="download" value="Download" type="submit" />
     <noscript>This page requires JavaScript to work.</noscript>
     <script

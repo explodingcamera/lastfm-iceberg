@@ -9,8 +9,8 @@ const downloadJPG = () => {
   const el = document.getElementById('results');
 
   toJpeg(el, { quality: 0.95 })
-    .then(function (dataUrl) {
-        var link = document.createElement('a');
+    .then((dataUrl) => {
+        const link = document.createElement('a');
         link.download = 'iceberg.jpeg';
         link.href = dataUrl;
         link.click();
@@ -21,7 +21,7 @@ const setError = (error) => {
   document.getElementById("submit").disabled = false;
   document.getElementById("message").style.display = "none";
   document.getElementById("download").style.display = "none";
-  document.getElementById("error").innerHTML = "Error: " + error + "." + "\n" + "Try disabling adblockers and refreshing the page, some adblockers block the last.fm API.";
+  document.getElementById("error").innerHTML = `Error: ${error}.\nTry disabling adblockers and refreshing the page, some adblockers block the last.fm API.`;
   document.getElementById("error").style.display = "block";
 };
 
@@ -65,15 +65,14 @@ const handleSubmit = async (e) => {
   data = data.map((x, i) => [x[0], Math.round((x[1] + (i / data.length) * 24) / 4), x[2]]);
 
   for (const element of data) {
-    if (isNaN(element[1])) continue;
-    
+    if (Number.isNaN(element[1])) continue;
+     
     const result = document.getElementsByClassName("result")[element[1]];
     const text = document.createElement("a");
     text.appendChild(document.createTextNode(element[0]));
     text.setAttribute("href", element[2]);
     result.appendChild(text);
   }
-
 
   for (const element of document.getElementsByClassName("result")) element.innerHTML = element.innerHTML.trim();
   setSuccess();

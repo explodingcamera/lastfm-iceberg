@@ -3,14 +3,11 @@
 }
 
 html {
-  background: radial-gradient(ellipse at bottom, #153a68 0%, #060708 100%);
   min-height: 100vh;
-  background-size: 400% 400%;
-  animation: gradient 4s ease infinite;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background-color: #0e0e0e;
 }
 
 a {
@@ -28,29 +25,52 @@ body {
 }
 
 body > p {
-  max-width: 640px;
-  width: 75vw;
-  font-size: 1.2rem;
+  max-width: 30rem;
+}
+
+span.lastfm {
+  font-weight: 400;
+  color: #ff0a0a;
 }
 
 #form {
-  display: inline-block;
-  margin-top: 0.5em;
-  margin-bottom: 1.5em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem 0;
 }
 
-#form td:last-of-type {
-  width: 10rem;
+#form fieldset {
+  display: flex;
+  gap: 1rem;
+  border: none;
+  width: 100%;
+}
+
+#form fieldset label {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+}
+
+#form fieldset label input {
+  width: 100%;
+}
+
+#form > label {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
 }
 
 #download {
   margin-top: 1rem;
   display: none;
-}
-
-#form td:first-child {
-  text-align: end;
-  padding-right: 0.5em;
 }
 
 select {
@@ -59,32 +79,24 @@ select {
 
 input,
 select {
-  border: none;
-  border-radius: 2px;
   padding: 0.5rem 0.8rem;
   margin: 0.4rem 0;
-  box-shadow: 1px 1px 8px 0px #00000094;
-  width: 10rem;
   box-sizing: border-box;
+  background: #212121;
+  color: white;
+  border: 1px solid #88ff84;
 }
 
 input[type="submit"] {
-  margin-top: 1em;
-  margin-bottom: 0.5em;
-
-  font-size: 1rem;
-  color: white;
-  cursor: pointer;
-  margin-right: 0.8rem;
-  margin-top: 0.8rem;
-  transition: all 0.1s ease-in-out;
-  padding: 0.8rem 1.2rem;
-  border-radius: 0.4rem;
-  backdrop-filter: blur(5px);
-  background: #ff2828d9;
-  font-weight: 800;
-  transition: all 0.2s;
+  background: #88ff84;
+  color: #212121;
   border: none;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  margin: 0.4rem 0;
+  width: 10rem;
+  box-sizing: border-box;
+  transition: 0.2s;
 }
 
 #message,
@@ -94,12 +106,12 @@ input[type="submit"] {
 }
 
 #results {
-  border-collapse: collapse;
-  font-weight: bold;
-  font-size: 1em;
-  width: 640px;
   margin: 0;
+  padding: 0;
+  font-weight: 800;
+  font-size: 1em;
   position: relative;
+  max-width: 40rem;
 }
 
 #results::after {
@@ -113,71 +125,58 @@ input[type="submit"] {
   opacity: 0.8;
 }
 
-#results tr {
-  background-position: center;
-  background-size: 100% 100%;
-  text-shadow: rgb(0, 0, 0) 2px 0px 0px, rgb(0, 0, 0) 1.75517px 0.958851px 0px,
-    rgb(0, 0, 0) 1.0806px 1.68294px 0px, rgb(0, 0, 0) 0.141474px 1.99499px 0px,
-    rgb(0, 0, 0) -0.832294px 1.81859px 0px,
-    rgb(0, 0, 0) -1.60229px 1.19694px 0px, rgb(0, 0, 0) -1.97999px 0.28224px 0px,
-    rgb(0, 0, 0) -1.87291px -0.701566px 0px,
-    rgb(0, 0, 0) -1.30729px -1.51361px 0px,
-    rgb(0, 0, 0) -0.421592px -1.95506px 0px,
-    rgb(0, 0, 0) 0.567324px -1.91785px 0px,
-    rgb(0, 0, 0) 1.41734px -1.41108px 0px,
-    rgb(0, 0, 0) 1.92034px -0.558831px 0px;
-  color: white;
+#results li {
+  background-size: cover;
+  aspect-ratio: 4.8;
 
-  height: auto;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 3px solid white;
-  border-collapse: collapse;
-  box-sizing: border-box;
-  border-width: 2px 2px 0;
+  flex-wrap: wrap;
+
+  border: 2px solid white;
+  -webkit-text-stroke: 0.5px black;
 }
 
-#results tbody {
-  display: flex;
-  flex-direction: column;
+#results li:not(:last-child) {
+  border-bottom: none;
 }
 
-#results tr:nth-child(1) {
+#results li:nth-child(1) {
   background-image: url("./images/iceberg-1.png");
 }
 
-#results tr:nth-child(2) {
+#results li:nth-child(2) {
   background-image: url("./images/iceberg-2.png");
 }
 
-#results tr:nth-child(3) {
+#results li:nth-child(3) {
   background-image: url("./images/iceberg-3.png");
 }
 
-#results tr:nth-child(4) {
+#results li:nth-child(4) {
   background-image: url("./images/iceberg-4.png");
 }
 
-#results tr:nth-child(5) {
+#results li:nth-child(5) {
   background-image: url("./images/iceberg-5.png");
 }
 
-#results tr:nth-child(6) {
+#results li:nth-child(6) {
   background-image: url("./images/iceberg-6.png");
 }
 
-#results tr:nth-child(7) {
+#results li:nth-child(7) {
   background-image: url("./images/iceberg-7.png");
 }
 
-#results tr:nth-child(8) {
+#results li:nth-child(8) {
   background-image: url("./images/iceberg-8.png");
 }
 
-#results tr:nth-child(9) {
+#results li:nth-child(9) {
   background-image: url("./images/iceberg-9.png");
-  border-width: 2px;
+  padding-bottom: 1.2rem;
 }
 
 #results td {
@@ -190,28 +189,12 @@ input[type="submit"] {
   min-height: 5rem;
 }
 
-@media (max-width: 740px) {
-  #results {
-    width: 75vw;
-  }
-
-  #results td {
-    font-size: 0.9rem;
-    min-height: 3rem;
-  }
-}
-
-.result {
-  width: 640px;
-  white-space: pre-wrap;
-  text-align: center;
-}
-
 .result a {
   color: white;
   text-decoration: none;
   white-space: nowrap;
-  padding: 0 0.5rem;
+  padding: 0 1rem;
+  font-size: min(1.2rem, 2.98vw);
 }
 
 noscript {
@@ -224,8 +207,4 @@ noscript {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.resultend {
-  padding: 1rem 1rem 2rem 1rem !important;
 }
