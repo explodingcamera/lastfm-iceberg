@@ -1,213 +1,213 @@
 * {
-  font-family: "DM Mono", monospace;
+	font-family: "DM Mono", monospace;
 }
 
 html {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background-color: #0e0e0e;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	background-color: #0e0e0e;
 }
 
 a {
-  color: white;
+	color: white;
 }
 
 body {
-  margin: 2em;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: white;
+	margin: 2em;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	color: white;
 }
 
 body > p {
-  max-width: 30rem;
+	max-width: 30rem;
 }
 
 span.lastfm {
-  font-weight: 400;
-  color: #ff0a0a;
+	font-weight: 400;
+	color: #ff0a0a;
 }
 
 #form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 2rem 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 2rem 0;
 }
 
 #form fieldset {
-  display: flex;
-  gap: 1rem;
-  border: none;
-  width: 100%;
+	display: flex;
+	gap: 1rem;
+	border: none;
+	width: 100%;
 }
 
 #form fieldset label {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: baseline;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: baseline;
 }
 
 #form fieldset label input {
-  width: 100%;
+	width: 100%;
 }
 
 #form > label {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	margin-bottom: 1rem;
 }
 
 #download {
-  margin-top: 1rem;
-  display: none;
+	margin-top: 1rem;
+	display: none;
 }
 
 select {
-  width: 100%;
+	width: 100%;
 }
 
 input,
 select {
-  padding: 0.5rem 0.8rem;
-  margin: 0.4rem 0;
-  box-sizing: border-box;
-  background: #212121;
-  color: white;
-  border: 1px solid #88ff84;
+	padding: 0.5rem 0.8rem;
+	margin: 0.4rem 0;
+	box-sizing: border-box;
+	background: #212121;
+	color: white;
+	border: 1px solid #88ff84;
 }
 
 input[type="submit"] {
-  background: #88ff84;
-  color: #212121;
-  border: none;
-  cursor: pointer;
-  padding: 0.5rem 1rem;
-  margin: 0.4rem 0;
-  width: 10rem;
-  box-sizing: border-box;
-  transition: 0.2s;
+	background: #88ff84;
+	color: #212121;
+	border: none;
+	cursor: pointer;
+	padding: 0.5rem 1rem;
+	margin: 0.4rem 0;
+	width: 10rem;
+	box-sizing: border-box;
+	transition: 0.2s;
 }
 
 #message,
 #error,
 #results {
-  display: none;
+	display: none;
 }
 
 #results {
-  margin: 0;
-  padding: 0;
-  font-weight: 400;
-  font-size: 1em;
-  position: relative;
-  max-width: 40rem;
+	margin: 0;
+	padding: 0;
+	font-weight: 400;
+	font-size: 1em;
+	position: relative;
+	max-width: 40rem;
 }
 
 #results::after {
-  content: "lastfm-iceberg.dawdle.space";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 0.4rem;
-  font-size: 0.7rem;
-  background: #88ff84;
-  color: black;
+	content: "lastfm-iceberg.dawdle.space";
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	padding: 0.4rem;
+	font-size: 0.7rem;
+	background: #88ff84;
+	color: black;
 }
 
 #results li {
-  background-size: cover;
-  background-position: center;
-  aspect-ratio: 4.8;
-  letter-spacing: -1px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  padding: 0.6rem 0;
-  border: 3px solid white;
-  text-shadow: -1px -1px 0 #000, 0 -1px 0 #000, 1px -1px 0 #000, 1px 0 0 #000,
-    1px 1px 0 #000, 0 1px 0 #000, -1px 1px 0 #000, -1px 0 0 #000;
+	background-size: cover;
+	background-position: center;
+	aspect-ratio: 4.8;
+	letter-spacing: -1px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	padding: 0.6rem 0;
+	border: 3px solid white;
+	text-shadow: -1px -1px 0 #000, 0 -1px 0 #000, 1px -1px 0 #000, 1px 0 0 #000,
+		1px 1px 0 #000, 0 1px 0 #000, -1px 1px 0 #000, -1px 0 0 #000;
 }
 
 #results li:not(:last-child) {
-  border-bottom: none;
+	border-bottom: none;
 }
 
 #results li:nth-child(1) {
-  background-image: url("./images/iceberg-1.png");
+	background-image: url("./images/iceberg-1.png");
 }
 
 #results li:nth-child(2) {
-  background-image: url("./images/iceberg-2.png");
+	background-image: url("./images/iceberg-2.png");
 }
 
 #results li:nth-child(3) {
-  background-image: url("./images/iceberg-3.png");
+	background-image: url("./images/iceberg-3.png");
 }
 
 #results li:nth-child(4) {
-  background-image: url("./images/iceberg-4.png");
+	background-image: url("./images/iceberg-4.png");
 }
 
 #results li:nth-child(5) {
-  background-image: url("./images/iceberg-5.png");
+	background-image: url("./images/iceberg-5.png");
 }
 
 #results li:nth-child(6) {
-  background-image: url("./images/iceberg-6.png");
+	background-image: url("./images/iceberg-6.png");
 }
 
 #results li:nth-child(7) {
-  background-image: url("./images/iceberg-7.png");
+	background-image: url("./images/iceberg-7.png");
 }
 
 #results li:nth-child(8) {
-  background-image: url("./images/iceberg-8.png");
+	background-image: url("./images/iceberg-8.png");
 }
 
 #results li:nth-child(9) {
-  background-image: url("./images/iceberg-9.png");
-  padding-bottom: 2rem;
+	background-image: url("./images/iceberg-9.png");
+	padding-bottom: 2rem;
 }
 
 #results td {
-  padding: 1em;
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  align-items: center;
-  width: 100%;
-  min-height: 5rem;
+	padding: 1em;
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+	align-items: center;
+	width: 100%;
+	min-height: 5rem;
 }
 
 .result a {
-  color: white;
-  text-decoration: none;
-  white-space: nowrap;
-  padding: 0 1rem;
-  font-size: min(1.2rem, 2.98vw);
+	color: white;
+	text-decoration: none;
+	white-space: nowrap;
+	padding: 0 1rem;
+	font-size: min(1.2rem, 2.98vw);
 }
 
 noscript {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }

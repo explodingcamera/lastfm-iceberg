@@ -1,5 +1,5 @@
 import { getData } from "./api.js";
-import { toJpeg } from "https://esm.sh/html-to-image@1.11.11";
+import { toJpeg } from "https://esm.sh/html-to-image@1.11.13";
 
 if (document.location.host === "explodingcamera.github.io") {
 	document.location = "https://lastfm-iceberg.dawdle.space";
