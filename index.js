@@ -1,5 +1,5 @@
+import { snapdom } from "https://esm.sh/@zumer/snapdom@1.9.9";
 import { getData } from "./api.js";
-import { toJpeg } from "https://esm.sh/html-to-image@1.11.13";
 
 if (document.location.host === "explodingcamera.github.io") {
 	document.location = "https://lastfm-iceberg.dawdle.space";
@@ -8,12 +8,9 @@ if (document.location.host === "explodingcamera.github.io") {
 const downloadJPG = () => {
 	const el = document.getElementById("results");
 
-	toJpeg(el, { quality: 0.95 }).then((dataUrl) => {
-		const link = document.createElement("a");
-		link.download = "iceberg.jpeg";
-		link.href = dataUrl;
-		link.click();
-	});
+	snapdom(el, { scale: 2 }).then((result) =>
+		result.download({ format: "jpg", filename: "lastfm-iceberg" }),
+	);
 };
 
 const setError = (error) => {

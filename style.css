@@ -62,7 +62,6 @@ span.lastfm {
 	display: flex;
 	flex-direction: row;
 	width: 100%;
-	display: flex;
 	align-items: center;
 	gap: 1rem;
 	margin-bottom: 1rem;
@@ -137,8 +136,15 @@ input[type="submit"] {
 	flex-wrap: wrap;
 	padding: 0.6rem 0;
 	border: 3px solid white;
-	text-shadow: -1px -1px 0 #000, 0 -1px 0 #000, 1px -1px 0 #000, 1px 0 0 #000,
-		1px 1px 0 #000, 0 1px 0 #000, -1px 1px 0 #000, -1px 0 0 #000;
+	text-shadow:
+		-1px -1px 0 #000,
+		0 -1px 0 #000,
+		1px -1px 0 #000,
+		1px 0 0 #000,
+		1px 1px 0 #000,
+		0 1px 0 #000,
+		-1px 1px 0 #000,
+		-1px 0 0 #000;
 }
 
 #results li:not(:last-child) {
@@ -146,39 +152,39 @@ input[type="submit"] {
 }
 
 #results li:nth-child(1) {
-	background-image: url("./images/iceberg-1.png");
+	background-image: url("./images/iceberg-1.jpg");
 }
 
 #results li:nth-child(2) {
-	background-image: url("./images/iceberg-2.png");
+	background-image: url("./images/iceberg-2.jpg");
 }
 
 #results li:nth-child(3) {
-	background-image: url("./images/iceberg-3.png");
+	background-image: url("./images/iceberg-3.jpg");
 }
 
 #results li:nth-child(4) {
-	background-image: url("./images/iceberg-4.png");
+	background-image: url("./images/iceberg-4.jpg");
 }
 
 #results li:nth-child(5) {
-	background-image: url("./images/iceberg-5.png");
+	background-image: url("./images/iceberg-5.jpg");
 }
 
 #results li:nth-child(6) {
-	background-image: url("./images/iceberg-6.png");
+	background-image: url("./images/iceberg-6.jpg");
 }
 
 #results li:nth-child(7) {
-	background-image: url("./images/iceberg-7.png");
+	background-image: url("./images/iceberg-7.jpg");
 }
 
 #results li:nth-child(8) {
-	background-image: url("./images/iceberg-8.png");
+	background-image: url("./images/iceberg-8.jpg");
 }
 
 #results li:nth-child(9) {
-	background-image: url("./images/iceberg-9.png");
+	background-image: url("./images/iceberg-9.jpg");
 	padding-bottom: 2rem;
 }
 
