@@ -6,7 +6,7 @@ A iceberg image generator. Based on the original source code by [u/ente3000](htt
 
 Added features:
 
-- removed need for a server (so this can be hosted indefinitly)
+- removed need for a server (so this can be hosted indefinitely)
 - made the page look a bit nicer
 - don't count features as artists anymore
 - added image download

@@ -1,4 +1,4 @@
-import { snapdom } from "https://esm.sh/@zumer/snapdom@1.9.13";
+import { snapdom } from "https://esm.sh/@zumer/snapdom@2.0.2 ";
 import { getData } from "./api.js";
 
 if (document.location.host === "explodingcamera.github.io") {
