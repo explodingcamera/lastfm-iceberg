@@ -2,74 +2,134 @@
 	font-family: "DM Mono", monospace;
 }
 
+:root {
+	--color-background: #0e0e0e;
+	--color-panel: #212121;
+	--color-text: white;
+	--color-accent: #88ff84;
+	--color-lastfm: #ff0a0a;
+	--color-spinner-track: #2f2f2f;
+	--color-shadow: #000;
+	--chart-width: min(100%, 34rem, calc(57.3vh - 4.8rem));
+}
+
+@supports (height: 100dvh) {
+	:root {
+		--chart-width: min(100%, 34rem, calc(57.3dvh - 4.8rem));
+	}
+}
+
 html {
-	min-height: 100vh;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	background-color: #0e0e0e;
+	min-height: 100%;
+	background-color: var(--color-background);
 }
 
 a {
-	color: white;
+	color: var(--color-text);
 }
 
 body {
-	margin: 2em;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+	min-height: 100vh;
+	margin: 0;
+	padding: 2rem;
+	box-sizing: border-box;
+	display: grid;
+	place-items: center;
 	text-align: center;
-	color: white;
+	color: var(--color-text);
 }
 
-body > p {
+main {
+	width: min(100%, 60rem);
+}
+
+.screen {
+	display: none;
+	width: 100%;
+}
+
+.screen.active {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#form-screen > p {
 	max-width: 30rem;
 }
 
 span.lastfm {
 	font-weight: 400;
-	color: #ff0a0a;
+	color: var(--color-lastfm);
 }
 
 #form {
 	display: flex;
 	flex-direction: column;
-	align-items: center;
-	margin: 2rem 0;
+	align-items: stretch;
+	gap: 0.75rem;
+	width: min(100%, 34rem);
+	margin: 2rem 0 1rem;
 }
 
 #form fieldset {
-	display: flex;
-	gap: 1rem;
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 0.75rem;
 	border: none;
+	margin: 0;
+	padding: 0;
 	width: 100%;
 }
 
 #form fieldset label {
-	flex: 1;
 	display: flex;
 	flex-direction: column;
-	align-items: baseline;
+	align-items: flex-start;
+	text-align: left;
 }
 
-#form fieldset label input {
+#form fieldset label input,
+#form fieldset label select {
 	width: 100%;
 }
 
-#form > label {
+#form > .checkbox-label {
 	display: flex;
 	flex-direction: row;
 	width: 100%;
 	align-items: center;
-	gap: 1rem;
-	margin-bottom: 1rem;
+	justify-content: center;
+	gap: 0.75rem;
 }
 
-#download {
-	margin-top: 1rem;
-	display: none;
+#submit {
+	align-self: center;
+}
+
+.site-links {
+	position: fixed;
+	left: 1rem;
+	right: 1rem;
+	bottom: 1rem;
+	display: flex;
+	justify-content: space-between;
+	gap: 1rem;
+	font-size: 0.8rem;
+}
+
+.actions {
+	display: flex;
+	justify-content: center;
+	gap: 0.75rem;
+	width: var(--chart-width);
+	margin-bottom: 0.75rem;
+}
+
+.actions button {
+	flex: 1;
+	width: auto;
+	margin: 0;
 }
 
 select {
@@ -77,18 +137,20 @@ select {
 }
 
 input,
-select {
+select,
+button {
 	padding: 0.5rem 0.8rem;
 	margin: 0.4rem 0;
 	box-sizing: border-box;
-	background: #212121;
-	color: white;
-	border: 1px solid #88ff84;
+	background: var(--color-panel);
+	color: var(--color-text);
+	border: 1px solid var(--color-accent);
 }
 
-input[type="submit"] {
-	background: #88ff84;
-	color: #212121;
+input[type="submit"],
+button {
+	background: var(--color-accent);
+	color: var(--color-panel);
 	border: none;
 	cursor: pointer;
 	padding: 0.5rem 1rem;
@@ -98,94 +160,90 @@ input[type="submit"] {
 	transition: 0.2s;
 }
 
-#message,
-#error,
-#results {
+#back {
+	background: transparent;
+	color: var(--color-accent);
+	border: 1px solid var(--color-accent);
+}
+
+#error {
 	display: none;
 }
 
+.spinner {
+	width: 3rem;
+	aspect-ratio: 1;
+	border: 2px solid var(--color-spinner-track);
+	border-top-color: var(--color-accent);
+	border-radius: 50%;
+	animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+	to {
+		transform: rotate(360deg);
+	}
+}
+
 #results {
+	width: var(--chart-width);
+	aspect-ratio: 1219 / 2127;
+	container-type: inline-size;
+	display: grid;
+	grid-template-rows: repeat(7, minmax(0, 1fr));
+	background-image: url("./images/iceberg.jpg");
+	background-size: 100% 100%;
+	background-position: center;
 	margin: 0;
 	padding: 0;
+	list-style: none;
 	font-weight: 400;
 	font-size: 1em;
 	position: relative;
-	max-width: 40rem;
+	border: 3px solid var(--color-text);
+	box-sizing: border-box;
+	overflow: visible;
 }
 
 #results::after {
 	content: "lastfm-iceberg.dawdle.space";
 	position: absolute;
-	bottom: 0;
-	left: 0;
-	right: 0;
+	bottom: -3px;
+	left: -3px;
+	right: -3px;
 	padding: 0.4rem;
-	font-size: 0.7rem;
-	background: #88ff84;
-	color: black;
+	font-size: clamp(0.5rem, 1.45vw, 0.75rem);
+	font-size: clamp(0.5rem, 2.2cqw, 0.75rem);
+	background: var(--color-accent);
+	color: var(--color-background);
+	z-index: 1;
 }
 
 #results li {
-	background-size: cover;
-	background-position: center;
-	aspect-ratio: 4.8;
 	letter-spacing: -1px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-wrap: wrap;
 	padding: 0.6rem 0;
-	border: 3px solid white;
 	text-shadow:
-		-1px -1px 0 #000,
-		0 -1px 0 #000,
-		1px -1px 0 #000,
-		1px 0 0 #000,
-		1px 1px 0 #000,
-		0 1px 0 #000,
-		-1px 1px 0 #000,
-		-1px 0 0 #000;
+		-1px -1px 0 var(--color-shadow),
+		0 -1px 0 var(--color-shadow),
+		1px -1px 0 var(--color-shadow),
+		1px 0 0 var(--color-shadow),
+		1px 1px 0 var(--color-shadow),
+		0 1px 0 var(--color-shadow),
+		-1px 1px 0 var(--color-shadow),
+		-1px 0 0 var(--color-shadow);
 }
 
-#results li:not(:last-child) {
-	border-bottom: none;
-}
-
-#results li:nth-child(1) {
-	background-image: url("./images/iceberg-1.jpg");
-}
-
-#results li:nth-child(2) {
-	background-image: url("./images/iceberg-2.jpg");
-}
-
-#results li:nth-child(3) {
-	background-image: url("./images/iceberg-3.jpg");
-}
-
-#results li:nth-child(4) {
-	background-image: url("./images/iceberg-4.jpg");
-}
-
-#results li:nth-child(5) {
-	background-image: url("./images/iceberg-5.jpg");
-}
-
-#results li:nth-child(6) {
-	background-image: url("./images/iceberg-6.jpg");
+#results li:not(:first-child) {
+	border-top: 3px solid var(--color-text);
 }
 
 #results li:nth-child(7) {
-	background-image: url("./images/iceberg-7.jpg");
-}
-
-#results li:nth-child(8) {
-	background-image: url("./images/iceberg-8.jpg");
-}
-
-#results li:nth-child(9) {
-	background-image: url("./images/iceberg-9.jpg");
-	padding-bottom: 2rem;
+	padding-bottom: 1.2rem;
+	padding-bottom: clamp(1.2rem, 6cqw, 2rem);
 }
 
 #results td {
@@ -199,11 +257,101 @@ input[type="submit"] {
 }
 
 .result a {
-	color: white;
+	color: var(--color-text);
 	text-decoration: none;
-	white-space: nowrap;
-	padding: 0 1rem;
-	font-size: min(1.2rem, 2.98vw);
+	max-width: 100%;
+	min-width: 0;
+	white-space: normal;
+	overflow-wrap: anywhere;
+	text-align: center;
+	padding: 0 0.55rem;
+	font-size: clamp(0.55rem, 2vw, 1.2rem);
+	padding: 0 1.8cqw;
+	font-size: clamp(0.55rem, 3cqw, 1.2rem);
+}
+
+@media (max-width: 600px) {
+	:root {
+		--chart-width: min(100%, calc(57.3vh - 4.2rem));
+	}
+
+	@supports (height: 100dvh) {
+		:root {
+			--chart-width: min(100%, calc(57.3dvh - 4.2rem));
+		}
+	}
+
+	body {
+		padding: 1rem;
+	}
+
+	h1 {
+		font-size: 1.55rem;
+	}
+
+	#form {
+		margin-top: 1.5rem;
+	}
+
+	#form fieldset {
+		grid-template-columns: 1fr;
+	}
+
+	input[type="submit"],
+	button {
+		width: 100%;
+	}
+
+	.site-links {
+		left: 0.75rem;
+		right: 0.75rem;
+		bottom: 0.9rem;
+		font-size: 0.9rem;
+	}
+
+	.actions {
+		gap: 0.5rem;
+		margin-bottom: 0.5rem;
+	}
+
+	.actions button {
+		padding: 0.35rem 0.7rem;
+	}
+
+	.result a {
+		padding: 0 0.45rem;
+		padding: 0 1.4cqw;
+	}
+}
+
+@media (max-width: 600px) and (max-height: 700px) {
+	body {
+		padding: 0.5rem 1rem 3rem;
+	}
+
+	h1 {
+		font-size: 1.35rem;
+		margin: 0.4rem 0;
+	}
+
+	#form-screen > p {
+		margin: 0.6rem 0;
+	}
+
+	#form {
+		gap: 0.6rem;
+		margin: 0.8rem 0 0.5rem;
+	}
+
+	#form fieldset {
+		gap: 0.6rem;
+	}
+
+	input,
+	select,
+	button {
+		padding: 0.4rem 0.7rem;
+	}
 }
 
 noscript {
@@ -212,7 +360,7 @@ noscript {
 	left: 0;
 	width: 100vw;
 	height: 100vh;
-	background: white;
+	background: var(--color-text);
 	display: flex;
 	justify-content: center;
 	align-items: center;

@@ -13,36 +13,41 @@ const downloadJPG = () => {
 	);
 };
 
+const showScreen = (id) => {
+	for (const screen of document.getElementsByClassName("screen"))
+		screen.classList.toggle("active", screen.id === id);
+};
+
 const setError = (error) => {
 	document.getElementById("submit").disabled = false;
-	document.getElementById("message").style.display = "none";
-	document.getElementById("download").style.display = "none";
 	document.getElementById("error").innerHTML =
 		`Error: ${error}.\nTry disabling adblockers and refreshing the page, some adblockers block the last.fm API.`;
 	document.getElementById("error").style.display = "block";
+	showScreen("form-screen");
 };
 
 const setSubmitted = () => {
 	document.getElementById("submit").disabled = true;
-	document.getElementById("message").style.display = "block";
-	document.getElementById("download").style.display = "none";
 	document.getElementById("error").style.display = "none";
-	document.getElementById("results").style.display = "none";
+	showScreen("loading-screen");
 };
 
 const setSuccess = () => {
 	document.getElementById("submit").disabled = false;
-	document.getElementById("message").style.display = "none";
-	document.getElementById("results").style.display = "block";
-	document.getElementById("download").style.display = "block";
+	showScreen("result-screen");
+};
+
+const handleBack = () => {
+	showScreen("form-screen");
 };
 
 const handleSubmit = async (e) => {
 	e.preventDefault();
 	setSubmitted();
 
-	for (const result of document.getElementsByClassName("result"))
-		result.innerHTML = "";
+	const results = document.getElementsByClassName("result");
+
+	for (const result of results) result.innerHTML = "";
 
 	const options = Object.fromEntries(
 		new FormData(document.getElementById("form")).entries(),
@@ -57,35 +62,37 @@ const handleSubmit = async (e) => {
 	}
 
 	data = data.sort((x, y) => x[1] - y[1]).reverse();
-	data = data.map((x) => [
-		x[0],
-		x[1] - Math.min(...data.map((x) => x[1])),
-		x[2],
-	]);
-	data = data.map((x) => [
-		x[0],
-		x[1] / Math.max(...data.map((x) => x[1])),
-		x[2],
-	]);
-	data = data.map((x) => [x[0], 8 - x[1] * 8, x[2]]);
-	data = data.map((x, i) => [
-		x[0],
-		Math.round((x[1] + (i / data.length) * 24) / 4),
-		x[2],
-	]);
+
+	const listeners = data.map((x) => x[1]);
+	const minListeners = Math.min(...listeners);
+	const maxListeners = Math.max(...listeners);
+	const listenerRange = maxListeners - minListeners;
+	const maxTier = results.length - 1;
+
+	data = data.map((x, i) => {
+		const rankRatio = data.length === 1 ? 0 : i / (data.length - 1);
+		const listenerRatio =
+			listenerRange === 0
+				? rankRatio
+				: 1 - (x[1] - minListeners) / listenerRange;
+		const tier = Math.round(
+			rankRatio * maxTier * 0.75 + listenerRatio * maxTier * 0.25,
+		);
+
+		return [x[0], Math.max(0, Math.min(maxTier, tier)), x[2]];
+	});
 
 	for (const element of data) {
 		if (Number.isNaN(element[1])) continue;
 
-		const result = document.getElementsByClassName("result")[element[1]];
+		const result = results[element[1]];
 		const text = document.createElement("a");
 		text.appendChild(document.createTextNode(element[0]));
 		text.setAttribute("href", element[2]);
 		result.appendChild(text);
 	}
 
-	for (const element of document.getElementsByClassName("result"))
-		element.innerHTML = element.innerHTML.trim();
+	for (const element of results) element.innerHTML = element.innerHTML.trim();
 	setSuccess();
 };
 
@@ -94,4 +101,6 @@ window.addEventListener("load", () => {
 
 	const button = document.getElementById("download");
 	button.addEventListener("click", downloadJPG);
+
+	document.getElementById("back").addEventListener("click", handleBack);
 });

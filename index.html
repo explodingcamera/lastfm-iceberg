@@ -1,95 +1,102 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>last.fm iceberg chart generator</title>
-    <link rel="stylesheet" href="./style.css?v=1" />
+    <link rel="stylesheet" href="./style.css?v=3" />
     <link rel="preconnect" href="https://fonts.bunny.net" />
     <link
       href="https://fonts.bunny.net/css?family=dm-mono:300,500"
       rel="stylesheet"
     />
-    <link rel="preload" href="./images/iceberg-1.jpg" as="image" />
-    <link rel="preload" href="./images/iceberg-2.jpg" as="image" />
-    <link rel="preload" href="./images/iceberg-3.jpg" as="image" />
-    <link rel="preload" href="./images/iceberg-4.jpg" as="image" />
-    <link rel="preload" href="./images/iceberg-5.jpg" as="image" />
-    <link rel="preload" href="./images/iceberg-6.jpg" as="image" />
-    <link rel="preload" href="./images/iceberg-7.jpg" as="image" />
-    <link rel="preload" href="./images/iceberg-8.jpg" as="image" />
-    <link rel="preload" href="./images/iceberg-9.jpg" as="image" />
+    <link rel="preload" href="./images/iceberg.jpg" as="image" />
     <script type="module" src="./index.js"></script>
   </head>
   <body>
-    <h1><span class="lastfm">last.fm</span> iceberg chart generator</h1>
-    <p>
-      Generate an
-      <a href="https://knowyourmeme.com/memes/iceberg-tiers-parodies"
-        >iceberg charts</a
-      >
-      based on your most played artists, albums or tracks and their respective
-      listener count.
-      <br />
-      <br />
-      <a href="https://henry.dawdle.space/">creator</a>
-      <a href="https://github.com/explodingcamera/lastfm-iceberg"
-        >source-code</a
-      >
-    </p>
-    <form id="form">
-      <fieldset>
-        <label
-          >Last.fm username
-          <input name="user" autofocus required />
-        </label>
-        <label
-          >Data to plot
-          <select name="mode">
-            <option value="artists" selected>Artists</option>
-            <option value="albums">Albums</option>
-            <option value="tracks">Tracks</option>
-          </select>
-        </label>
-      </fieldset>
-      <fieldset>
-        <label
-          >Date period
-          <select name="period">
-            <option value="7day">Week</option>
-            <option value="1month">Month</option>
-            <option value="3month">3 months</option>
-            <option value="6month">6 months</option>
-            <option value="12month">Year</option>
-            <option value="overall" selected>Overall</option>
-          </select>
-        </label>
-        <label
-          >Number of results
-          <input type="number" name="amount" min="5" max="100" value="50" />
-        </label>
-      </fieldset>
-      <label
-        >Include guest appearances
-        <input type="checkbox" name="filter" />
-      </label>
-      <input id="submit" type="submit" value="Generate" />
-    </form>
-    <p id="message">Generating, please wait... This will take a few seconds.</p>
-    <p id="error"></p>
-    <ul id="results">
-      <li class="result"></li>
-      <li class="result"></li>
-      <li class="result"></li>
-      <li class="result"></li>
-      <li class="result"></li>
-      <li class="result"></li>
-      <li class="result"></li>
-      <li class="result"></li>
-      <li class="result"></li>
-    </ul>
+    <main>
+      <section id="form-screen" class="screen active">
+        <h1><span class="lastfm">last.fm</span> iceberg chart generator</h1>
+        <p>
+          Generate an
+          <a href="https://knowyourmeme.com/memes/iceberg-tiers-parodies"
+            >iceberg charts</a
+          >
+          based on your most played artists, albums or tracks and their
+          respective listener count.
+        </p>
+        <form id="form">
+          <fieldset>
+            <label
+              >Last.fm username
+              <input name="user" required />
+            </label>
+            <label
+              >Data to plot
+              <select name="mode">
+                <option value="artists" selected>Artists</option>
+                <option value="albums">Albums</option>
+                <option value="tracks">Tracks</option>
+              </select>
+            </label>
+          </fieldset>
+          <fieldset>
+            <label
+              >Date period
+              <select name="period">
+                <option value="7day">Week</option>
+                <option value="1month">Month</option>
+                <option value="3month">3 months</option>
+                <option value="6month">6 months</option>
+                <option value="12month">Year</option>
+                <option value="overall" selected>Overall</option>
+              </select>
+            </label>
+            <label
+              >Number of results
+              <input type="number" name="amount" min="5" max="100" value="25" />
+            </label>
+          </fieldset>
+          <label class="checkbox-label"
+            >Include guest appearances
+            <input type="checkbox" name="filter" />
+          </label>
+          <input id="submit" type="submit" value="Generate" />
+        </form>
+        <p id="error"></p>
+      </section>
 
-    <input id="download" value="Download" type="submit" />
+      <section id="loading-screen" class="screen" aria-live="polite">
+        <div class="spinner" aria-hidden="true"></div>
+        <p id="message">
+          Generating, please wait... This will take a few seconds.
+        </p>
+      </section>
+
+      <section id="result-screen" class="screen">
+        <div class="actions">
+          <button id="back" type="button">&lt; Settings</button>
+          <button id="download" type="button">Download</button>
+        </div>
+        <ul id="results">
+          <li class="result"></li>
+          <li class="result"></li>
+          <li class="result"></li>
+          <li class="result"></li>
+          <li class="result"></li>
+          <li class="result"></li>
+          <li class="result"></li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="site-links">
+      <a href="https://dawdle.space/">hosted on dawdle.space</a>
+      <a href="https://github.com/explodingcamera/lastfm-iceberg"
+        >source code</a
+      >
+    </footer>
+
     <noscript>This page requires JavaScript to work.</noscript>
     <script
       type="module"
