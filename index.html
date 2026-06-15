@@ -3,7 +3,37 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>last.fm iceberg chart generator</title>
+    <title>Last.fm Iceberg Chart Generator</title>
+    <link
+      rel="icon"
+      href="./favicon-dark.svg"
+      media="(prefers-color-scheme: light)"
+    />
+    <link
+      rel="icon"
+      href="./favicon-light.svg"
+      media="(prefers-color-scheme: dark)"
+    />
+    <link rel="canonical" href="https://lastfm-iceberg.dawdle.space/" />
+    <meta
+      name="description"
+      content="Generate a Last.fm iceberg chart from your top artists, albums, or tracks, grouped by listener count. Free tool hosted on dawdle.space."
+    />
+    <meta
+      property="og:description"
+      content="Generate an iceberg chart from your Last.fm top artists, albums, or tracks."
+    />
+    <meta property="og:title" content="Last.fm Iceberg Chart Generator" />
+    <meta property="og:site_name" content="dawdle.space" />
+    <meta name="application-name" content="Last.fm Iceberg Chart Generator" />
+    <meta property="og:url" content="https://lastfm-iceberg.dawdle.space/" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Last.fm Iceberg Chart Generator" />
+    <meta
+      name="twitter:description"
+      content="Generate an iceberg chart from your Last.fm top artists, albums, or tracks."
+    />
     <link rel="stylesheet" href="./style.css?v=3" />
     <link rel="preconnect" href="https://fonts.bunny.net" />
     <link
@@ -11,6 +41,28 @@
       rel="stylesheet"
     />
     <link rel="preload" href="./images/iceberg.jpg" as="image" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Last.fm Iceberg Chart Generator",
+        "url": "https://lastfm-iceberg.dawdle.space/",
+        "description": "Generate a Last.fm iceberg chart from your top artists, albums, or tracks, grouped by listener count.",
+        "applicationCategory": "EntertainmentApplication",
+        "operatingSystem": "Web",
+        "isAccessibleForFree": true,
+        "creator": {
+          "@type": "Organization",
+          "name": "dawdle.space",
+          "url": "https://dawdle.space/"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "EUR"
+        }
+      }
+    </script>
     <script type="module" src="./index.js"></script>
   </head>
   <body>
@@ -20,7 +72,7 @@
         <p>
           Generate an
           <a href="https://knowyourmeme.com/memes/iceberg-tiers-parodies"
-            >iceberg charts</a
+            >iceberg chart</a
           >
           based on your most played artists, albums or tracks and their
           respective listener count.
