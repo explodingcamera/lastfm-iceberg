@@ -29,7 +29,7 @@ a {
 }
 
 body {
-	min-height: 100vh;
+	min-height: 100dvh;
 	margin: 0;
 	padding: 2rem;
 	box-sizing: border-box;
@@ -266,7 +266,7 @@ button {
 	text-align: center;
 	padding: 0 0.55rem;
 	font-size: clamp(0.55rem, 2vw, 1.2rem);
-	padding: 0 1.8cqw;
+	padding: 0 2.2cqw;
 	font-size: clamp(0.55rem, 3cqw, 1.2rem);
 }
 
@@ -320,7 +320,7 @@ button {
 
 	.result a {
 		padding: 0 0.45rem;
-		padding: 0 1.4cqw;
+		padding: 0 2.4cqw;
 	}
 }
 
@@ -359,7 +359,7 @@ noscript {
 	top: 0;
 	left: 0;
 	width: 100vw;
-	height: 100vh;
+	height: 100dvh;
 	background: var(--color-text);
 	display: flex;
 	justify-content: center;
