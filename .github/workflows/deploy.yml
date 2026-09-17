@@ -1,0 +1,32 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  deployments: write
+
+concurrency:
+  group: deploy
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://lastfm-iceberg.dawdle.space/
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Upload to Dawdle
+        uses: dawdlespace/action@v1
+        with:
+          site-id: tqtw6epn9q
+          api-key: ${{ secrets.DAWDLE_API_KEY }}
+          path: public
+          replace: true

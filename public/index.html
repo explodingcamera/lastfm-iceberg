@@ -67,8 +67,10 @@
   </head>
   <body>
     <main>
-      <section id="form-screen" class="screen active">
-        <h1><span class="lastfm">last.fm</span> iceberg chart generator</h1>
+      <section id="form-screen" class="screen active" aria-labelledby="title">
+        <h1 id="title" tabindex="-1">
+          <span class="lastfm">last.fm</span> iceberg chart generator
+        </h1>
         <p>
           Generate an
           <a href="https://knowyourmeme.com/memes/iceberg-tiers-parodies"
@@ -79,9 +81,16 @@
         </p>
         <form id="form">
           <fieldset>
+            <legend class="visually-hidden">Chart source</legend>
             <label
               >Last.fm username
-              <input name="user" required />
+              <input
+                name="user"
+                autocomplete="username"
+                autocapitalize="none"
+                spellcheck="false"
+                required
+              />
             </label>
             <label
               >Data to plot
@@ -93,6 +102,7 @@
             </label>
           </fieldset>
           <fieldset>
+            <legend class="visually-hidden">Chart options</legend>
             <label
               >Date period
               <select name="period">
@@ -115,29 +125,41 @@
           </label>
           <input id="submit" type="submit" value="Generate" />
         </form>
-        <p id="error"></p>
+        <p id="error" role="alert" tabindex="-1"></p>
       </section>
 
-      <section id="loading-screen" class="screen" aria-live="polite">
+      <section
+        id="loading-screen"
+        class="screen"
+        aria-labelledby="message"
+        aria-live="polite"
+      >
         <div class="spinner" aria-hidden="true"></div>
-        <p id="message">
+        <p id="message" tabindex="-1">
           Generating, please wait... This will take a few seconds.
         </p>
       </section>
 
-      <section id="result-screen" class="screen">
+      <section
+        id="result-screen"
+        class="screen"
+        aria-labelledby="result-title"
+      >
+        <h2 id="result-title" class="visually-hidden" tabindex="-1">
+          Your iceberg chart
+        </h2>
         <div class="actions">
           <button id="back" type="button">&lt; Settings</button>
           <button id="download" type="button">Download</button>
         </div>
-        <ul id="results">
-          <li class="result"></li>
-          <li class="result"></li>
-          <li class="result"></li>
-          <li class="result"></li>
-          <li class="result"></li>
-          <li class="result"></li>
-          <li class="result"></li>
+        <ul id="results" aria-label="Iceberg tiers, from most to least popular">
+          <li class="result" aria-label="Tier 1"></li>
+          <li class="result" aria-label="Tier 2"></li>
+          <li class="result" aria-label="Tier 3"></li>
+          <li class="result" aria-label="Tier 4"></li>
+          <li class="result" aria-label="Tier 5"></li>
+          <li class="result" aria-label="Tier 6"></li>
+          <li class="result" aria-label="Tier 7"></li>
         </ul>
       </section>
     </main>

@@ -1,4 +1,4 @@
-import { snapdom } from "https://esm.sh/@zumer/snapdom@2.0.2 ";
+import { snapdom } from "https://esm.sh/@zumer/snapdom@3.0.0";
 import { getData } from "./api.js";
 
 if (document.location.host === "explodingcamera.github.io") {
@@ -16,14 +16,18 @@ const downloadJPG = () => {
 const showScreen = (id) => {
 	for (const screen of document.getElementsByClassName("screen"))
 		screen.classList.toggle("active", screen.id === id);
+
+	const heading = document.querySelector(`#${id} [tabindex="-1"]`);
+	heading?.focus();
 };
 
 const setError = (error) => {
 	document.getElementById("submit").disabled = false;
-	document.getElementById("error").innerHTML =
-		`Error: ${error}.\nTry disabling adblockers and refreshing the page, some adblockers block the last.fm API.`;
-	document.getElementById("error").style.display = "block";
 	showScreen("form-screen");
+	const errorMessage = document.getElementById("error");
+	errorMessage.style.display = "block";
+	errorMessage.textContent = `Error: ${error}.\nTry disabling adblockers and refreshing the page, some adblockers block the last.fm API.`;
+	errorMessage.focus();
 };
 
 const setSubmitted = () => {
